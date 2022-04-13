@@ -1,0 +1,39 @@
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+@for $i from 100 through 1000 {
+  .maxw-#{$i}px {
+    max-width: #{$i} + "px";
+  }
+  .maxh-#{$i}px {
+    max-height: #{$i} + "px";
+  }
+  .minw-#{$i}px {
+    min-width: #{$i} + "px";
+  }
+  .minh-#{$i}px {
+    min-height: #{$i} + "px";
+  }
+}
+
+@for $i from 0 through 100 {
+  .maxw-#{$i} {
+    max-width: #{$i} + "%";
+  }
+  .maxh-#{$i} {
+    max-height: #{$i} + "%";
+  }
+  .minw-#{$i} {
+    min-width: #{$i} + "%";
+  }
+  .minh-#{$i} {
+    min-height: #{$i} + "%";
+  }
+}
+.text-left {
+  text-align: left;
+}
+.font-unset {
+  font-family: unset !important;
+}
