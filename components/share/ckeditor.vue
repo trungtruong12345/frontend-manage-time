@@ -26,8 +26,9 @@ export default {
     },
   },
   async mounted() {
+    this.startLoading();
     const ClassicEditor = await import("../../lib/ckeditor.js");
-    ClassicEditor.default
+    await ClassicEditor.default
       .create(this.$refs["textarea"], {
         licenseKey: "",
       })
@@ -36,18 +37,19 @@ export default {
         editor.model.document.on("change:data", () => {
           this.inputValue = editor.getData();
         });
-        this.editor = editor
+        this.editor = editor;
       })
       .catch((error) => {
         console.error(error);
       });
+    this.stopLoading();
   },
   watch: {
     inputValue(val) {
       if (this.editor && !this.editor.getData() && val) {
-        this.editor.setData(val)
+        this.editor.setData(val);
       }
-    }
-  }
+    },
+  },
 };
 </script>

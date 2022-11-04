@@ -239,8 +239,8 @@ export default {
     font-family: "Poppins", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
+    // font-size: 15px;
+    // line-height: 18px;
     color: #ffffff !important;
   }
   .icon-edit {
