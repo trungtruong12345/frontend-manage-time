@@ -1,31 +1,36 @@
 <template>
   <div class="notes__note">
     <!-- <client-only> -->
-      <div class="note__title" >
-        <nuxt-link :to="`/notes/${note.id}`">
-          {{ note.title }}
-        </nuxt-link>
+    <div class="note__title">
+      <nuxt-link :to="`/notes/${note.id}`">
+        {{ note.title }}
+      </nuxt-link>
+    </div>
+
+    <div class="note__content" v-html="note.content"></div>
+
+    <div
+      class="d-flex align-items-end justify-content-between position-relative dropdown flex-1"
+    >
+      <div class="time-ago">
+        <Timeago :datetime="note.updated_at" :auto-update="60" />
       </div>
 
-      <div class="note__content" v-html="note.content"></div>
+      <div class="icon-menu btn-dropdown">
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      </div>
 
-      <div
-        class="d-flex align-items-center justify-content-end position-relative dropdown"
-      >
-        <div class="icon-menu btn-dropdown">
-          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      <div :class="`menu position-absolute d-none`">
+        <div class="item">
+          <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
+          <NuxtLink :to="`/notes/${note.id}/edit`"> edit </NuxtLink>
         </div>
-        <div :class="`menu position-absolute d-none`">
-          <div class="item">
-            <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
-            <NuxtLink :to="`/notes/${note.id}/edit`"> edit </NuxtLink>
-          </div>
-          <div class="item">
-            <i class="fa fa-eraser text-danger" aria-hidden="true"></i>
-            <a href="#" @click="onDelete">delete</a>
-          </div>
+        <div class="item">
+          <i class="fa fa-eraser text-danger" aria-hidden="true"></i>
+          <a href="#" @click="onDelete">delete</a>
         </div>
       </div>
+    </div>
     <!-- </client-only> -->
   </div>
 </template>
@@ -44,13 +49,13 @@ export default {
       const { id } = this.note;
       let res;
       if (!!result) {
-        this.startLoading()
+        this.startLoading();
         res = await this.delete({ id });
-        this.stopLoading()
+        this.stopLoading();
         if (res.status) {
           window.$nuxt.$toast.success("Success!").goAway(2000);
           const paramId = this.$route.params?.id;
-          if (paramId && paramId == id) this.$router.push({path: "/notes"})
+          if (paramId && paramId == id) this.$router.push({ path: "/notes" });
         }
       }
     },
@@ -95,23 +100,23 @@ export default {
   background-color: #36353a;
   padding: 11.04px 13px;
   cursor: pointer;
-  margin-bottom: 10.04px;
+  // margin-bottom: 20px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 .note__title a {
   font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  word-break: break-word;
+  font-weight: 600;
+  font-size: 18px;
   color: #dfdddd;
   line-height: 22px;
   margin-bottom: 5.11px;
-
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  display: -webkit-box;
-
-  word-break: break-all;
+  -webkit-line-clamp: 2;
 }
 .note__content {
   font-style: normal;
@@ -125,7 +130,7 @@ export default {
   overflow: hidden;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  height: 55px;
+  height: 93px;
   display: -webkit-box;
 
   word-break: break-all;

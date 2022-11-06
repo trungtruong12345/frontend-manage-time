@@ -182,7 +182,6 @@ export default {
 <style lang="scss" scoped>
 .content {
   margin: 42px 304px;
-
   .title {
     font-family: "Poppins", Arial, sans-serif;
     font-style: normal;
@@ -236,7 +235,7 @@ export default {
   }
   .content__details {
     margin-top: 22px;
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     // font-size: 15px;

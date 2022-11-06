@@ -30,6 +30,10 @@
   .minh-#{$i} {
     min-height: #{$i} + "%";
   }
+
+  .flex-#{$i} {
+    flex: $i;
+  }
 }
 .text-left {
   text-align: left;

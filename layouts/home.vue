@@ -21,7 +21,7 @@ export default {
   middleware: "checkLogged",
   data() {
     return {
-      toggle: true,
+      toggle: false,
     };
   },
   methods: {

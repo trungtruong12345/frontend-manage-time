@@ -1,5 +1,5 @@
 <template>
-  <div class="content d-flex flex-nowrap w-100 position-relative note_page">
+  <div class="content d-flex flex-nowrap position-relative note_page">
     <div class="details w-100">
       <Details :id="id" />
     </div>

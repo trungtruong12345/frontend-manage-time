@@ -1,5 +1,6 @@
 <template>
-  <div class="content d-flex flex-nowrap w-100 position-relative note_page">
+  <div class="content d-flex flex-nowrap position-relative note_page">
+    <!-- <div class="overly"></div> -->
     <div :class="`menu--right w-100 ${menuRight ? '' : 'w-0'} full-page`">
       <div class="d-flex align-items-center flex-wrap">
         <div class="search align-items-stretch w-100">
@@ -156,9 +157,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .overly {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   right: 0;
+//   background: linear-gradient(to top, #101820, rgba(16, 24, 32, 0));
+// }
 .content {
   background-color: #1c1b20;
   color: #c8c8c8;
+  transition: 0.3s;
 
   & *:not(i) {
     font-family: "Poppins", Arial, sans-serif;
@@ -275,10 +285,8 @@ export default {
       margin-top: 25.11px;
       margin-bottom: 15px;
       display: grid;
-      grid-gap: 25px;
-      grid-template-columns:
-        calc((100% - 75px) / 4) calc((100% - 75px) / 4) calc((100% - 75px) / 4)
-        calc((100% - 75px) / 4);
+      grid-gap: 32px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
       grid-auto-rows: min-content;
     }
   }

@@ -30,8 +30,8 @@
         <i class="fa fa-pause" aria-hidden="true" v-if="intervalId"></i>
         <i class="fa fa-play" aria-hidden="true" v-else></i>
       </div>
-      <div class="action-skip" role="button" @click="onNextType">
-        <i class="fa fa-forward" aria-hidden="true"></i>
+      <div class="action-skip" role="button" @click="onRefresh">
+        <i class="fa fa-refresh" aria-hidden="true"></i>
       </div>
     </div>
     <client-only>
@@ -94,6 +94,9 @@ export default {
           this.onChangeTimer("pomodoro");
           break;
       }
+    },
+    onRefresh() {
+      this.onChangeTimer(this.type);
     },
     async onStart() {
       this.onClearInterval();
